@@ -1,0 +1,8 @@
+: HANCOM Agent build
+go run -v -ldflags '-X "main.version=1.1" -X "main.build=20210316"' hancom.go
+
+: com0com
+g++ com0com.c -o com0com.exe <---- (*)
+g++ -m32 com0com.c -o com0com.exe
+
+: com0com.exe 속성변경 (호환> 관리자모드)

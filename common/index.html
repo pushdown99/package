@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Colorlib Templates">
+  <meta name="author" content="Colorlib">
+  <meta name="keywords" content="Colorlib Templates">
+
+  <title>Setting for receipt</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    .card {
+      box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
+      margin-bottom: 1rem;
+    }
+    .card-primary.card-outline {
+    border-top: 3px solid #007bff;
+    }
+    .card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+    }
+    .card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    }
+    label:not(.form-check-label):not(.custom-file-label) {
+    font-weight: 300;
+    }
+    label {
+    display: inline-block;
+    /* margin-bottom: .1rem; */
+    }
+    label {
+    display: inline-block;
+    margin-bottom: .5rem;
+    }
+    body {
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-stroke: 0.45px;
+    /* -webkit-text-stroke: 0.45px rgba(0, 0, 0, 0.1); */
+    text-shadow: #fff 0px 0.1px 0.1px;
+    font-weight: 300;
+    /* font-family: 'Ropa Sans', 'Noto Sans KR', sans-serif !important; */
+    font-family: 'Noto Sans KR', sans-serif !important;
+    }
+    .form-control {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-weight: 300;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    box-shadow: inset 0 0 0 transparent;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+  </style>
+</head>
+
+<body>
+  <secsion class="content-header">
+    <div class="container">
+      <h3 class="m-0">
+        <div id="page-title">POS 에이전트 설정</div>
+      </h3>
+    </div>
+  </secsion>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card card-primary card-outline">
+          <div class="card-body">
+            <div class="form-row">
+              <br>
+              <div class="form-group col-md-12">
+                <div class="input-group">
+                  <div class="input-group-prepend"><div class="input-group-text">접속할 서버 주소 (URL)</div></div>
+                  <input id="url" type="text" class="form-control" style="width: 300px;" value="{{.HttpHost}}" placeholder="https://">
+                </div>
+              </div>
+
+              <div class="form-group col-md-12">
+                <div class="input-group">
+                  <div class="input-group-prepend"><div class="input-group-text">웹소켓 서버 주소</div></div>
+                  <input id="ws" type="text" class="form-control" style="width: 300px;" value="{{.WsHost}}" placeholder="https://">
+                </div>
+              </div>
+
+              <div class="form-group col-md-12">
+                <div class="input-group">
+                  <div class="input-group-prepend"><div class="input-group-text">사업자등록번호</div></div>
+                  <input id="rcn" type="text" class="form-control" value="{{.RcnNum}}" placeholder="사업자등록번호">
+                </div>
+              </div>
+
+              <div class="form-group col-md-12">
+                <div class="input-group">
+                  <div class="input-group-prepend"><div class="input-group-text">현재 등록된 시리얼 포트</div></div>
+                  <input id="ports" type="text" class="form-control" style="width: 300px;" value="{{.Ports}}" placeholder="" disabled>
+                </div>
+              </div>
+
+              <div class="form-group col-md-12">
+                <div class="input-group">
+                  <div class="input-group-prepend"><div class="input-group-text">프린터포트</div></div>
+                  <input id="printer" type="text" class="form-control" style="width: 80px;" value="{{.Printer}}" placeholder="COM1">
+                </div>
+              </div>
+
+              <div class="form-group col-md-12">
+                <div class="input-group">
+                  <div class="input-group-prepend"><div class="input-group-text">가상 시리얼 포트 (COM)</div></div>
+                  <input id="port1" type="text" class="form-control" style="width: 80px;" value="{{.Port1}}" placeholder="COM2">
+                  <input id="port2" type="text" class="form-control" style="width: 80px;" value="{{.Port2}}" placeholder="COM3">
+                  <button id="vport" class="btn btn-primary" style="float: left;">포트생성</button>
+                </div>
+              </div>
+
+              <div class="form-group col-md-12">
+                <div class="input-group">
+                  <div class="input-group-prepend"><div class="input-group-text">연결주기설정</div></div>
+                  <input id="heartbeat" type="text" class="form-control" style="width: 80px;" value="{{.HeartBeat}}" placeholder="300">
+                </div>
+              </div>
+
+              <div class="form-group col-md-12">
+                <div class="input-group">
+                  <div class="input-group-prepend"><div class="input-group-text">인터넷 IP 주소</div></div>
+                  <input id="pubaddr" type="text" class="form-control" style="width: 150px;" value="{{.PubAddr}}" placeholder="COM3" disabled>
+                </div>
+              </div>
+              <div class="form-group col-md-12">
+                <div class="input-group">
+                  <div class="input-group-prepend"><div class="input-group-text">아웃바운드 IP 주소</div></div>
+                  <input id="ipaddr" type="text" class="form-control" style="width: 150px;" value="{{.IpAddr}}" placeholder="COM3" disabled>
+                </div>
+              </div>
+              <div class="form-group col-md-12">
+                <div class="input-group">
+                  <div class="input-group-prepend"><div class="input-group-text">하드웨어주소</div></div>
+                  <input id="macaddr" type="text" class="form-control" style="width: 150px;" value="{{.MacAddr}}" placeholder="COM3" disabled>
+                </div>
+              </div>
+
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                  <button id="update" class="btn btn-primary" style="float: right;">환경저장</button>
+                </div>
+            </div>
+    
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-alert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-body"><span id="alert-body"></span></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
+  
+<script>
+$.extend({
+  postJSON: function(url, body) {
+    return $.ajax({
+      type: 'POST',
+      url: url,
+      data: JSON.stringify(body),
+      contentType: "application/json",
+      dataType: 'json'
+    });
+  },
+
+  postFORM: function(url, formData) {
+    $.ajax({
+      type: "POST",
+      enctype: 'multipart/form-data',
+      url: url,
+      data: formData,
+      processData: false,
+      contentType: false,
+      cache: false,
+      timeout: 600000,
+      success: function (data) {
+        console.log("SUCCESS : ", data);
+      },
+      error: function (e) {
+        console.log("ERROR : ", e);
+      }
+    });
+  },
+});
+
+function dynamicAlert (body) {
+  $("#alert-body").html(body);
+  $("#modal-alert").modal('show');
+}
+
+$(function() {
+});
+
+$(document).on('click', '#update', function (event) {
+    console.log("update");
+    var params = {
+      server:    $("#url").val(),
+      ws:        $("#ws").val(),
+      rcn:       $("#rcn").val(),
+      printer:   $("#printer").val(),
+      port1:     $("#port1").val(),
+      port2:     $("#port2").val(),
+      heartbeat: $("#heartbeat").val()
+    }
+    console.log (params)
+    $.postJSON('/json/update', params).then(res => {
+        dynamicAlert("설정을 변경하였습니다."); 
+        console.log (res);
+    });
+});
+
+$(document).on('click', '#vport', function (event) {
+    console.log("update");
+    var params = {
+      port1:   $("#port1").val(),
+      port2:   $("#port2").val()
+    }
+    console.log (params)
+    $.postJSON('/json/vport', params).then(res => {
+        dynamicAlert("가상포트를 설정하였습니다."); 
+        console.log (res);
+    });
+});
+
+</script>
+</body>
+
+</html>
